@@ -18,10 +18,23 @@
 
 
     <link rel="stylesheet" href="css/style2.css">
+    
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
 
-    
+    <link rel="stylesheet" href="static/css/profileIndexCommonCard.css">    
+    <style>
+      #blogs{
+        display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 400px;
+  
+        width: 80%;
+        height: 30%;
+}
+    </style>
 
 </head>
 <body>
@@ -53,7 +66,7 @@
     <nav  class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
        
-        <a style="color: rgb(246,124,86);" class="navbar-brand" href="#"> 
+        <a style="color: rgb(246,124,86);" class="navbar-brand" href="index.php"> 
             
             <span class="mt-5" style="font-size: 50px;"> E-Waste</span></a>
 
@@ -66,14 +79,14 @@
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a style="color: rgb(246,124,86);font-weight: bold;"class="nav-link"  href="index.html">Home</a>
+              <a style="color: rgb(246,124,86);font-weight: bold;"class="nav-link"  href="index.php">Home</a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="#doc_list">What is Zero Waste</a>
+              <a class="nav-link" href="#">What is Zero Waste</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#news_list">Blog</a>
+              <a class="nav-link" href="blog.php">Blog</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>

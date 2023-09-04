@@ -33,38 +33,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="javascript:void(0)">
-									<div class="item-content">
-										<div class="item-media">
-											<i class="ti-id-badge"></i>
-										</div>
-										<div class="item-inner">
-											<span class="title"> Doctors </span><i class="icon-arrow"></i>
-										</div>
-									</div>
-								</a>
-								<ul class="sub-menu">
-									<li>
-										<a href="doctor-specilization.php">
-										<i class="ti-view-list"></i>	
-										<span class="title"> Doctor Specialization </span>
-										</a>
-									</li>
-									<li>
-										<a href="add-doctor.php">
-										<i class="ti-plus"></i>	
-										<span class="title"> Add Doctor</span>
-										</a>
-									</li>
-									<li>
-										<a href="Manage-doctors.php">
-										<i class="ti-panel"></i>	
-										<span class="title"> Manage Doctors </span>
-										</a>
-									</li>
-									
-								</ul>
-								</li>
+								
 
 				<li>
 								<a href="javascript:void(0)">
@@ -73,56 +42,29 @@
 											<i class="ti-id-badge"></i>
 										</div>
 										<div class="item-inner">
-											<span class="title"> Users </span><i class="icon-arrow"></i>
+											<span class="title"> Blog Post </span><i class="icon-arrow"></i>
 										</div>
 									</div>
 								</a>
 								<ul class="sub-menu">
 									
 									<li>
-										<a href="manage-users.php">
+										<a href="add-blog.php">
+										<i class="ti-plus"></i>
+											<span class="title"> Add Blogs </span>
+										</a>
+									</li>
+					
+									<li>
+										<a href="manage-blog.php">
 										<i class="ti-panel"></i>
-											<span class="title"> Manage Users </span>
+											<span class="title"> Manage Blogs </span>
 										</a>
 									</li>
 									
 								</ul>
 								</li>
-								<li>
-								<a href="javascript:void(0)">
-									<div class="item-content">
-										<div class="item-media">
-											<i class="ti-id-badge"></i>
-										</div>
-										<div class="item-inner">
-											<span class="title"> Patients </span><i class="icon-arrow"></i>
-										</div>
-									</div>
-								</a>
-								<ul class="sub-menu">
 									
-									<li>
-										<a href="manage-patient.php">
-										<i class="ti-panel"></i>	
-										<span class="title"> Manage Patients </span>
-										</a>
-									</li>
-									
-								</ul>
-								</li>	
-
-<li>
-								<a href="appointment-history.php">
-									<div class="item-content">
-										<div class="item-media">
-											<i class="ti-file"></i>
-										</div>
-										<div class="item-inner">
-											<span class="title"> Appointment History </span>
-										</div>
-									</div>
-								</a>
-							</li>
 
 
 
@@ -155,24 +97,7 @@
 									
 								</ul>
 								</li>
-
-
-
-	<li>
-								<a href="doctor-logs.php">
-									<div class="item-content">
-										<div class="item-media">
-											<i class="ti-view-list"></i>
-										</div>
-										<div class="item-inner">
-											<span class="title"> Doctor Session Logs </span>
-										</div>
-									</div>
-								</a>
-							</li>		
-
-
-
+		
 							<li>
 								<a href="user-logs.php">
 									<div class="item-content">
@@ -185,44 +110,6 @@
 									</div>
 								</a>
 							</li>						
-				<li>
-								<a href="javascript:void(0)">
-									<div class="item-content">
-										<div class="item-media">
-											<i class="ti-agenda"></i>
-										</div>
-										<div class="item-inner">
-											<span class="title"> Reports </span><i class="icon-arrow"></i>
-										</div>
-									</div>
-								</a>
-								<ul class="sub-menu">
-									
-									<li>
-										<a href="between-dates-reports.php">
-										<i class="ti-agenda"></i>	
-										<span class="title">B/w dates reports </span>
-										</a>
-									</li>
-
-									
-									
-								</ul>
-								<li>
-								<a href="patient-search.php">
-									<div class="item-content">
-										<div class="item-media">
-											<i class="ti-search"></i>
-										</div>
-										<div class="item-inner">
-											<span class="title"> Patient Search </span>
-										</div>
-									</div>
-								</a>
-							</li>
-								</li>
-
-						</ul>
 						<!-- end: CORE FEATURES -->
 						
 					</nav>

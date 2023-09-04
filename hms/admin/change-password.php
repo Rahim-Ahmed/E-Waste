@@ -77,7 +77,7 @@ return true;
 </script>
 
 	</head>
-	<body>
+	<body style="background: linear-gradient(to bottom, #ffffff  30%, #fbe7df 93%);">
 		<div id="app">		
 <?php include('include/sidebar.php');?>
 			<div class="app-content">

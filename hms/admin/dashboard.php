@@ -28,7 +28,7 @@ check_login();
 
 
 	</head>
-	<body>
+	<body style="background: linear-gradient(to bottom, #ffffff  30%, #fbe7df 93%);">
 		<div id="app">		
 <?php include('include/sidebar.php');?>
 			<div class="app-content">
@@ -76,10 +76,10 @@ check_login();
 									<div class="panel panel-white no-radius text-center">
 										<div class="panel-body">
 											<span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
-											<h2 class="StepTitle">Manage Users</h2>
+											<h2 class="StepTitle">Manage Blogs</h2>
 											
 											<p class="links cl-effect-1">
-												<a href="manage-users.php">
+												<a href="manage-blog.php">
 												<?php $result = mysqli_query($con,"SELECT * FROM users ");
 $num_rows = mysqli_num_rows($result);
 {
@@ -90,70 +90,7 @@ $num_rows = mysqli_num_rows($result);
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-4">
-									<div class="panel panel-white no-radius text-center">
-										<div class="panel-body">
-											<span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-users fa-stack-1x fa-inverse"></i> </span>
-											<h2 class="StepTitle">Manage Doctors</h2>
-										
-											<p class="cl-effect-1">
-												<a href="manage-doctors.php">
-												<?php $result1 = mysqli_query($con,"SELECT * FROM doctors ");
-$num_rows1 = mysqli_num_rows($result1);
-{
-?>
-											Total Doctors :<?php echo htmlentities($num_rows1);  } ?>		
-												</a>
-												
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="panel panel-white no-radius text-center">
-										<div class="panel-body">
-											<span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
-											<h2 class="StepTitle"> Appointments</h2>
-											
-											<p class="links cl-effect-1">
-												<a href="book-appointment.php">
-													<a href="appointment-history.php">
-												<?php $sql= mysqli_query($con,"select doctors.doctorName as docname,users.fullName as pname, appointment.*  from appointment join doctors on doctors.id=appointment.doctorId join users on users.id=appointment.userId");
-$num_rows2 = mysqli_num_rows($sql);
-{
-?>
-											Total Appointments :<?php echo htmlentities($num_rows2);  } ?>	
-												</a>
-												</a>
-											</p>
-										</div>
-									</div>
-								</div>
-
-<div class="col-sm-4">
-									<div class="panel panel-white no-radius text-center">
-										<div class="panel-body">
-											<span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
-											<h2 class="StepTitle">Manage Patients</h2>
-											
-											<p class="links cl-effect-1">
-												<a href="manage-patient.php">
-<?php $result = mysqli_query($con,"SELECT * FROM tblpatient ");
-$num_rows = mysqli_num_rows($result);
-{
-?>
-Total Patients :<?php echo htmlentities($num_rows);  
-} ?>		
-</a>
-											</p>
-										</div>
-									</div>
-								</div>
-
-
-
-
-
+								
 			<div class="col-sm-4">
 									<div class="panel panel-white no-radius text-center">
 										<div class="panel-body">

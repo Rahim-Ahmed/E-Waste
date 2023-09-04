@@ -53,7 +53,7 @@
     <nav  class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
        
-        <a style="color: rgb(246,124,86);" class="navbar-brand" href="#"> 
+        <a style="color: rgb(246,124,86);" class="navbar-brand" href="Index.php"> 
             
             <span class="mt-5" style="font-size: 50px;"> E-Waste</span></a>
 
@@ -73,7 +73,7 @@
               <a class="nav-link" href="#doc_list">What is Zero Waste</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#news_list">Blog</a>
+              <a class="nav-link" href="blog.php">Blog</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
@@ -88,8 +88,7 @@
   </header>
   
 
-  <section  style="  background: linear-gradient(to bottom, #fbe7df 30%, #ffffff 93%);;
-  ">
+  <section  style="  background: linear-gradient(to bottom, #fbe7df 30%, #ffffff 93%);">
         
     <div class="half1">
             <h3 class="mt-5" style="color: rgb(246,124,86);font-size: 60px;">MINIMIZE WASTE</h3>
@@ -232,50 +231,80 @@
 </div>
 -->
 
+<?php
+define('DB_SERVER','localhost');
+define('DB_USER','root');
+define('DB_PASS' ,'');
+define('DB_NAME', 'blog_website');
+$conn = mysqli_connect(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
+// Check connection
+if (mysqli_connect_errno())
+{
+ echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+$serverName = "localhost";
+$userName = "root";
+$password = "";
+$dataBase = "blog_website";
+$tableName = "allblogs";
+
+  $fetch = false;
+  $sql = "SELECT * FROM  $tableName ORDER BY `allblogs`.`time` DESC;";
+  $result = mysqli_query($conn,$sql);
+  
+  $aff = mysqli_affected_rows($conn);
+  if ($aff<1) {
+      $fetch = false;
+  }
+  else{
+      $fetch = true;
+  }
+  
+?>
+
 <div style="  background: linear-gradient(to bottom, #fbe7df 30%, #ffffff 93%);padding-bottom: 100px;" class="bg-secondary-subtle" id="news_list" >
     <div class="d-flex justify-content-center">
         <div class="mt-5 m-4 ">
             <h1 class="fw-bold">Our Recent Blog Post</h1>
         </div>
     </div>
+    
 
-    <div class="hstack justify-content-center gap-5 mt-2" >
-        <div class="card " id="blog" style="width: 18rem;" >
-            <img src="assets/img/blog/blog_4.jpg" class="card-img-top" alt="...">
-            <div class="card-body" >
-              <h5 class="card-title">Kidney stones can be a serious problem.</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="https://github.com/Rahim-Ahmed/Basic_BS5/tree/main" class="btn btn-primary stretched-link" target="_blank">Go somewhere</a>
-            </div>
-          </div>
-    
-          <div class="card" id="blog" style="width: 18rem;">
-            <img src="assets/img/blog/blog_1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">List of Countries without Coronavirus case</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="https://github.com/Rahim-Ahmed/Basic_BS5/tree/main" class="btn btn-primary stretched-link" target="_blank">Go somewhere</a>
-            </div>
-          </div>
-    
-          <div class="card" id="blog" style="width: 18rem;">
-            <img src="assets/img/blog/blog_2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Recovery Room: News beyond the pandemic</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="https://github.com/Rahim-Ahmed/Basic_BS5/tree/main" class="btn btn-primary stretched-link" target="_blank">Go somewhere</a>
-            </div>
-          </div>
-    
-    
-          <div class="card" id="blog" style="width: 18rem;">
-            <img src="assets/img/blog/blog_3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">What is the impact of eating too much sugar?</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="https://github.com/Rahim-Ahmed/Basic_BS5/tree/main" class="btn btn-primary stretched-link" target="_blank">Go somewhere</a>
-            </div>
-          </div>
+    <div class='hstack justify-content-center gap-5 mt-2' >
+    <?php
+          if($fetch){
+            $i=0;
+              while($i!=3 && $data = mysqli_fetch_object($result)){
+                $blogTitle = $data->{'blog_title'};
+                $blogSubtitle = $data->{'blog_subtitle'};
+
+                $blogContent = $data->{'blog_content'};
+                $blogLen = "...";
+                $mainContent = substr($blogContent,0,150,).$blogLen;
+                
+                echo
+                "
+                <div class='card' id='blog' style='width: 18rem;height: 28rem;' >
+                    <img src='assets/img/blog/blog_4.jpg' class='card-img-top' alt='...'>
+                    <div class='card-body' >
+                      <h5 class='card-title'>$blogTitle</h5>
+                      <p class='card-text'>$mainContent</p>
+                      
+                      <a href='https://github.com/Rahim-Ahmed/Basic_BS5/tree/main' target='_blank' >
+                      <div class='btn btn-primary stretched-link' style='color:black'>
+                      Read More
+                      </div>
+                      
+                     </a>
+                      
+                       </div>
+                  </div>
+            ";
+            $i++;
+
+            }
+          }
+        ?>
     
     
       

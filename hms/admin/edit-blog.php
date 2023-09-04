@@ -1,9 +1,10 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include('include/config.php');
 include('include/checklogin.php');
 check_login();
+$did=intval($_GET['id']);
 
 if(isset($_POST['upload']))
 {
@@ -18,8 +19,8 @@ if(isset($_POST['upload']))
 		move_uploaded_file($filepath,$destfile);
 		//$insertquery= "INSERT INTO ";
 	}
-	
-	$sql=mysqli_query($con,"Update admin set pic='$destfile' where id='".$_SESSION['id']."'");
+	$dest='upload/'.$filename;
+	$sql=mysqli_query($con,"Update allblogs set pic='$dest' where blog_sno='$did'");
 if($sql)
 {
 echo "<script>alert('Picture updated Successfully');</script>";
@@ -31,25 +32,23 @@ echo "<script>alert('Picture updated Successfully');</script>";
 
 if(isset($_POST['submit']))
 {
-	$fname=$_POST['fname'];
-$address=$_POST['address'];
-$city=$_POST['city'];
-$gender=$_POST['gender'];
-
-$sql=mysqli_query($con,"Update admin set fullName='$fname',address='$address',city='$city',gender='$gender' where id='".$_SESSION['id']."'");
+$usname=$_POST['username'];
+$mail=$_POST['email'];
+$title=$_POST['blog_title'];
+$stitle=$_POST['blog_subtitle'];
+$content=$_POST['blog_content'];
+$sql=mysqli_query($con,"Update allblogs set username='$usname',email='$mail',blog_title='$title',blog_subtitle='$stitle',blog_content='$content' where blog_sno='$did'");
 if($sql)
 {
-$msg="Your Profile updated Successfully";
-
+$msg="blog Details updated Successfully";
 
 }
-
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Admin | Edit Profile</title>
+		<title>Admin | Edit Blogs</title>
 		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -68,13 +67,14 @@ $msg="Your Profile updated Successfully";
 
 
 	</head>
-	<body >
+	<body>
 		<div id="app">		
 <?php include('include/sidebar.php');?>
 			<div class="app-content">
 				
 						<?php include('include/header.php');?>
-						
+						<!-- start: MENU TOGGLER FOR MOBILE DEVICES -->
+					
 				<!-- end: TOP NAVBAR -->
 				<div class="main-content" >
 					<div class="wrap-content container" id="container">
@@ -82,14 +82,14 @@ $msg="Your Profile updated Successfully";
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle">Admin | Edit Profile</h1>
+									<h1 class="mainTitle">Admin | Edit blog Details</h1>
 																	</div>
 								<ol class="breadcrumb">
 									<li>
-										<span>Admin </span>
+										<span>Admin</span>
 									</li>
 									<li class="active">
-										<span>Edit Profile</span>
+										<span>Edit blog Details</span>
 									</li>
 								</ol>
 							</div>
@@ -97,80 +97,61 @@ $msg="Your Profile updated Successfully";
 						<!-- end: PAGE TITLE -->
 						<!-- start: BASIC EXAMPLE -->
 						<div class="container-fluid container-fullw bg-white">
-							<div class="row" style="background: linear-gradient(to bottom, #ffffff  30%, #fbe7df 93%);">
+							<div class="row">
 								<div class="col-md-12">
-<h5 style="color: green; font-size:18px; ">
+									<h5 style="color: green; font-size:18px; ">
 <?php if($msg) { echo htmlentities($msg);}?> </h5>
 									<div class="row margin-top-30">
 										<div class="col-lg-8 col-md-12">
 											<div class="panel panel-white">
 												<div class="panel-heading">
-													<h5 class="panel-title">Edit Profile</h5>
+													<h5 class="panel-title">Edit blog info</h5>
 												</div>
 												<div class="panel-body">
-									<?php 
-$sql=mysqli_query($con,"select * from admin where id='".$_SESSION['id']."'");
+									<?php $sql=mysqli_query($con,"select * from allblogs where blog_sno='$did'");
 while($data=mysqli_fetch_array($sql))
 {
 ?>
-<h4><?php echo htmlentities($data['fullName']);?>'s Profile</h4>
-<?php if($data['updationDate']){?>
-<p><b>Profile Last Updation Date: </b><?php echo htmlentities($data['updationDate']);?></p>
-<?php } ?>
-<div class="left "><img id="doc_img" src="<?php echo htmlentities($data['pic']);?>" alt="null" ></div>
-<hr />													
-
-
-<form role="form" name="edit" method="post">
-													
-
+<h4><?php echo htmlentities($data['username']);?>'s Profile</h4>
+<div class="left "><img id="doc_img" style="max-width: 500px;max-height: 500px;" src="<?php echo './'.htmlentities($data['pic']);?>" alt="null" ></div>
+<hr />
+													<form role="form" name="adddoc" method="post" onSubmit="return valid();">
+														
 <div class="form-group">
-															<label for="fname">
+															<label for="username">
 																 User Name
 															</label>
-	<input type="text" name="fname" class="form-control" value="<?php echo htmlentities($data['fullName']);?>" >
+	<input type="text" name="username" class="form-control" value="<?php echo htmlentities($data['username']);?>" >
 														</div>
 
 
 <div class="form-group">
-															<label for="address">
-																 Address
+															<label for="email">
+                                                            Email Address
 															</label>
-					<textarea name="address" class="form-control"><?php echo htmlentities($data['address']);?></textarea>
+    <input type="text" name="email" class="form-control" value="<?php echo htmlentities($data['email']);?>" >
 														</div>
 <div class="form-group">
-															<label for="city">
-																 City
+															<label for="blog_title">
+																 Blog title
 															</label>
-		<input type="text" name="city" class="form-control" required="required"  value="<?php echo htmlentities($data['city']);?>" >
+		<input type="text" name="blog_title" class="form-control" required="required"  value="<?php echo htmlentities($data['blog_title']);?>" >
 														</div>
 	
 <div class="form-group">
-									<label for="gender">
-																Gender
+									<label for="blog_subtitle">
+																Blog subtitles
 															</label>
-
-<select name="gender" class="form-control" required="required" >
-<option value="<?php echo htmlentities($data['gender']);?>"><?php echo htmlentities($data['gender']);?></option>
-<option value="male">Male</option>	
-<option value="female">Female</option>	
-<option value="other">Other</option>	
-</select>
-
+					<input type="text" name="blog_subtitle" class="form-control" required="required"  value="<?php echo htmlentities($data['blog_subtitle']);?>">
 														</div>
-
 <div class="form-group">
-									<label for="fess">
-																 User name
+									<label for="blog_content">
+																 Blog content
 															</label>
-					<input type="email" name="uemail" class="form-control"  readonly="readonly"  value="<?php echo htmlentities($data['username']);?>">
-					<!-- <a href="change-emaild.php">Update your email id</a> -->
+					<input type="text" name="blog_content" class="form-control" required="required"  value="<?php echo htmlentities($data['blog_content']);?>">
 														</div>
-
-
-
 														
-														
+														<?php } ?>
 														
 														
 														<button type="submit" name="submit" class="btn btn-o btn-primary">
@@ -181,7 +162,7 @@ while($data=mysqli_fetch_array($sql))
 <form role="form" name="adddoc" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 									<label for="fess">
-																 <br> Admin's Photo
+																 <br> Blog thumbnail 
 															</label>
 					<input type="file" name="photo" class="form-control form-control ChangeEvntImage UploadEventImage tab5-required-check"  value="<?=$data['pic']?>" id="image" >
 				
@@ -190,10 +171,7 @@ while($data=mysqli_fetch_array($sql))
 															upload
 														</button>
 													</form>
-
-
-
-													<?php } ?>
+										
 												</div>
 											</div>
 										</div>
@@ -208,7 +186,8 @@ while($data=mysqli_fetch_array($sql))
 										</div>
 									</div>
 								</div>
-						
+							</div>
+						</div>
 						<!-- end: BASIC EXAMPLE -->
 			
 					
@@ -227,7 +206,7 @@ while($data=mysqli_fetch_array($sql))
 		
 			<!-- start: SETTINGS -->
 	<?php include('include/setting.php');?>
-			
+			<>
 			<!-- end: SETTINGS -->
 		</div>
 		<!-- start: MAIN JAVASCRIPTS -->

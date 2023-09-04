@@ -32,7 +32,7 @@ if(isset($_GET['del']))
 		<link rel="stylesheet" href="assets/css/plugins.css">
 		<link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
 	</head>
-	<body>
+	<body style="background: linear-gradient(to bottom, #ffffff  30%, #fbe7df 93%);">
 		<div id="app">		
 <?php include('include/sidebar.php');?>
 			<div class="app-content">

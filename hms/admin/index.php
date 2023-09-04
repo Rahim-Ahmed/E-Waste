@@ -50,16 +50,18 @@ exit();
 		<link rel="stylesheet" href="assets/css/plugins.css">
 		<link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
 	</head>
-	<body class="login">
+	<body class="login" style="  background: linear-gradient(to bottom, #fbe7df 30%, #ffffff 93%);">
 		<div class="row">
-			<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4" style=" padding-top: 120px;">
 				<div class="logo margin-top-30">
-				<a href="../../index.html"><h2><img src="../../icon/East West.png" alt="Medical carae" style="height: 50px;"> <span style="font-weight: bold;"> <span style="color:#00D9A5 ;" >EW</span>-Health Care</span> | Admin Login</h2></a>
+				<a style="color: rgb(246,124,86);" href="Index.php"> 
+            
+                  <span class="mt-5" style="font-size: 50px;"> E-Waste</span> <h2>| Admin Login </h2> </a> 
 				</div>
 
-				<div class="box-login">
+				<div class="box-login " style="background:#e4e4eea4;">
 					<form class="form-login" method="post">
-						<fieldset>
+						<fieldset style="background:#e4e4eea4;">
 							<legend>
 								Sign in to your account
 							</legend>

@@ -52,6 +52,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  
 }
 
 html {
@@ -67,7 +68,7 @@ body {
   font-size: 13px;
   padding: 0;
   margin: 0;
-  background: #f7f7f8;
+  background: linear-gradient(to bottom, #ffffff  30%, #fbe7df 93%);
   -webkit-font-smoothing: antialiased !important;
 }
 body.bg_style_1 {
@@ -221,6 +222,7 @@ h5.over-title {
   position: relative;
   width: 100%;
   overflow: hidden;
+  background: linear-gradient(to bottom, #ffffff  30%, #fbe7df 93%);
 }
 #app .app-content {
   height: 100%;
